@@ -1,0 +1,10 @@
+# Local credentials only. Never commit this file.
+.env
+
+# Terraform local state and working files
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+*.tfvars
+*.tfvars.json
