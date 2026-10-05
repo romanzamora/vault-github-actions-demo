@@ -1,4 +1,5 @@
 terraform {
+  # The HCP Terraform workspace executes this directory remotely.
   required_version = ">= 1.6.0"
 
   required_providers {
