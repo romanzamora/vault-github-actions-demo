@@ -45,8 +45,8 @@ resource "vault_jwt_auth_backend_role" "github_actions_demo" {
   role_name = local.jwt_role_name
   role_type = "jwt"
 
-  user_claim      = "repository"
-  bound_audiences = ["https://github.com/${local.github_owner}"]
+  user_claim        = "repository"
+  bound_audiences   = ["https://github.com/${local.github_owner}"]
   bound_claims_type = "string"
   bound_claims = {
     repository = "${local.github_owner}/${local.github_repository}"
