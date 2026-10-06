@@ -13,7 +13,8 @@ the `admin` namespace:
 - `secret/github-actions-demo` with a generated `demo-api-key` value
 - a read-only Vault policy for that KV v2 path
 - JWT auth mounted at `jwt-github-actions`
-- a JWT role locked to `romanzamora/vault-github-actions-demo` on `main`
+- a JWT role locked to the `romanzamora/vault-github-actions-demo` repository
+  and `main` branch claims
 
 The generated demo secret is stored in encrypted HCP Terraform state. Use a
 different pattern for production secrets: write them directly to Vault through

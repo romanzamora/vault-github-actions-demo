@@ -6,7 +6,6 @@ locals {
   jwt_auth_path     = "jwt-github-actions"
   jwt_role_name     = "github-actions-demo"
 
-  github_subject = "repo:${local.github_owner}/${local.github_repository}:ref:refs/heads/main"
 }
 
 # This demo secret is generated in HCP Terraform; it never appears in Git.
@@ -48,7 +47,11 @@ resource "vault_jwt_auth_backend_role" "github_actions_demo" {
 
   user_claim      = "repository"
   bound_audiences = ["https://github.com/${local.github_owner}"]
-  bound_subject   = local.github_subject
+  bound_claims_type = "string"
+  bound_claims = {
+    repository = "${local.github_owner}/${local.github_repository}"
+    ref        = "refs/heads/main"
+  }
 
   token_policies          = [vault_policy.github_actions_demo_read.name]
   token_no_default_policy = true
